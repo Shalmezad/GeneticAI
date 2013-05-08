@@ -18,7 +18,7 @@ float GenePool::measureFitness(string expectedOutput, string actualOutput)
 {
     //TODO: Implement fitness measuring.
     return 0.0;
-}
+}//measureFitness(string, string)
 
 void GenePool::testGeneration()
 {
@@ -51,8 +51,26 @@ void GenePool::pollGeneration()
 
 Test GenePool::makeTest()
 {
+    //For now:
+    //Find a BF program to write the given message.
+    //Create a test
     Test newTest;
+    //no input
     newTest.input = "";
+    //we want a given message
     newTest.output = "Hi";
     return newTest;
-}
+}//makeTest()
+
+string GenePool::getReport()
+{
+    //display a report on the current generation.
+    string report = "";
+    //TODO: Add variables to the report.
+    report += "Average fitness: ";
+    report += "Best fitness: ";
+    report += "Best program: ";
+    report += "Best program output: ";
+
+    return report;
+}//getReport()

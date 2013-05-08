@@ -22,10 +22,17 @@ string BFProgram::execute(string input)
     int memIndex = 0;
     //setup an input index
     int inputIndex = 0;
-
+    //setup a step counter
+    int currentStep = 0;
     //start execution
     for(int a=0; a<code.length(); a++)
     {
+        //increment the current step we're on.
+        currentStep++;
+        //have we reached our limit?
+        if(currentStep > MAXSTEPS){
+            throw "Program timed-out.";
+        }
         //what instruction are we running?
         char instruct = code[a];
         switch(instruct)

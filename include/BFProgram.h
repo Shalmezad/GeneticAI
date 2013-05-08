@@ -4,6 +4,7 @@
 #include <string>
 
 const int MEMSIZE = 30000;
+const int MAXSTEPS = 30000;
 
 class BFProgram
 {

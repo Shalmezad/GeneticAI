@@ -20,6 +20,7 @@ class GenePool
         void testGeneration();
         void pollGeneration();
         Test makeTest();
+        std::string getReport();
     private:
         BFProgram* programPool;
 };
