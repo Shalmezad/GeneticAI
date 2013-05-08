@@ -158,6 +158,8 @@ string GenePool::getReport()
     string report = "";
     stringstream ss (stringstream::in | stringstream::out);
     //TODO: Add variables to the report.
+    ss << "Total fitness: ";
+    ss << getTotalFitness() << endl;
     ss << "Average fitness: ";
     ss << (getTotalFitness() / POOLSIZE) << endl;
     ss << "Best fitness: " << endl;

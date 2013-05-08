@@ -1,4 +1,5 @@
 #include "../include/BFProgram.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -19,9 +20,17 @@ string BFProgram::mutate()
 }
 string BFProgram::mutate(string toMutate)
 {
-    //TODO: Implement program mutation.
+    string newCode = toMutate;
+    string allowedCharacters = "<>+-.,[]";
     //go through each character...
-    return "";
+    for(int a=0; a<newCode.length(); a++){
+        if(rand()/RAND_MAX < MUTATIONRATE){
+            //mutate the character.
+            int newChar = rand() % allowedCharacters.length();
+            newCode[a] = allowedCharacters[newChar];
+        }
+    }
+    return newCode;
 }//mutate()
 
 string BFProgram::execute(string input)

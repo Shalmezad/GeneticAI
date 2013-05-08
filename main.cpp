@@ -12,6 +12,10 @@ int main()
     GenePool gp;
     gp.testGeneration();
     cout<<gp.getReport();
+    cout<<"Polling next generation..."<<endl;
+    gp.pollGeneration();
+    gp.testGeneration();
+    cout<<gp.getReport();
     return 0;
 }
 

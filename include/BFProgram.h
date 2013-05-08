@@ -5,6 +5,7 @@
 
 const int MEMSIZE = 30000;
 const int MAXSTEPS = 30000;
+const float MUTATIONRATE = .002;
 
 class BFProgram
 {
