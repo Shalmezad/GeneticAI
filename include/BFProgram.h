@@ -7,6 +7,7 @@ class BFProgram
 {
     public:
         BFProgram();
+        std::string execute();
         std::string execute(std::string);
     private:
         std::string code;

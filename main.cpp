@@ -9,6 +9,6 @@ int main()
     //create a BFProgram
     BFProgram testProgram;
     //then display it's output
-    cout<<testProgram.execute("");
+    cout<<testProgram.execute();
     return 0;
 }
