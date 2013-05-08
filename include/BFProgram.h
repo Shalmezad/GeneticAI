@@ -11,8 +11,11 @@ class BFProgram
         BFProgram();
         std::string execute();
         std::string execute(std::string);
+        float getFitness(){return fitness;}
+        void setFitness(float f){fitness = f;}
     private:
         std::string code;
+        float fitness;
 };
 
 #endif // BFPROGRAM_H
