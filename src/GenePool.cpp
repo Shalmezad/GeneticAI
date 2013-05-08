@@ -38,13 +38,17 @@ float GenePool::measureFitness(string expectedOutput, string actualOutput)
     int m = 0;
 
     //cycle through the first string
-    for(int a=0; a<s1; a++){
+    for(int a=0; a<s1; a++)
+    {
         //cycle through the second string.
-        for(int b=0; b<s2; b++){
+        for(int b=0; b<s2; b++)
+        {
             //are we less than the max allowed distance?
-            if(abs(a-b) < maxDistance){
+            if(abs(a-b) < maxDistance)
+            {
                 //check the characters:
-                if(expectedOutput[a] == actualOutput[b]){
+                if(expectedOutput[a] == actualOutput[b])
+                {
                     //if a match, increment.
                     m++;
                     break;
@@ -54,7 +58,8 @@ float GenePool::measureFitness(string expectedOutput, string actualOutput)
     }
 
     //At this point, if matched characters = 0, return 0.
-    if(m == 0){
+    if(m == 0)
+    {
         return 0.0;
     }//if(matchedCharacters == 0)
 
@@ -73,7 +78,8 @@ void GenePool::testGeneration()
     string programOutput;
     float programFitness;
     //cycle through each program.
-    for(int a=0; a<POOLSIZE; a++){
+    for(int a=0; a<POOLSIZE; a++)
+    {
         try
         {
             //run the program
@@ -83,7 +89,8 @@ void GenePool::testGeneration()
             //and set the program fitness.
             programPool[a].setFitness(programFitness);
         }//try
-        catch(const char *e){
+        catch(const char *e)
+        {
             //Program errored. Fitness is 0.
             programPool[a].setFitness(0.0);
         }//catch(const char *e)
@@ -95,8 +102,13 @@ void GenePool::pollGeneration()
     //TODO: Implement polling for the next generation
     //First, set-up the next generation.
     BFProgram *newPool;
-    newPool = new BFProgram[1000];
+    newPool = new BFProgram[POOLSIZE];
     //cycle through, setting up the new pool based on the old pool.
+    for(int a=0; a<POOLSIZE; a++)
+    {
+        //choose a base program.
+
+    }
     //now delete the old pool
     delete[] programPool;
     //and set it up so we're using the new pool.
@@ -106,7 +118,8 @@ void GenePool::pollGeneration()
 float GenePool::getTotalFitness()
 {
     float total = 0.0;
-    for(int i=0; i<POOLSIZE; i++){
+    for(int i=0; i<POOLSIZE; i++)
+    {
         total += programPool[i].getFitness();
     }
     return total;
@@ -131,11 +144,11 @@ string GenePool::getReport()
     string report = "";
     stringstream ss (stringstream::in | stringstream::out);
     //TODO: Add variables to the report.
-    ss<< "Average fitness: ";
-    ss<< (getTotalFitness()/POOLSIZE)<<endl;
-    ss<< "Best fitness: "<<endl;
-    ss<< "Best program: "<<endl;
-    ss<< "Best program output: "<<endl;
+    ss << "Average fitness: ";
+    ss << (getTotalFitness() / POOLSIZE) << endl;
+    ss << "Best fitness: " << endl;
+    ss << "Best program: " << endl;
+    ss << "Best program output: " << endl;
 
     return ss.str();
 }//getReport()

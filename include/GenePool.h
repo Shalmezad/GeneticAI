@@ -13,17 +13,17 @@ struct Test
 
 class GenePool
 {
-    public:
-        GenePool();
-        ~GenePool();
-        float measureFitness(std::string, std::string);
-        void testGeneration();
-        void pollGeneration();
-        Test makeTest();
-        std::string getReport();
-        float getTotalFitness();
-    private:
-        BFProgram* programPool;
+public:
+    GenePool();
+    ~GenePool();
+    float measureFitness(std::string, std::string);
+    void testGeneration();
+    void pollGeneration();
+    Test makeTest();
+    std::string getReport();
+    float getTotalFitness();
+private:
+    BFProgram* programPool;
 };
 
 #endif // GENEPOOL_H
