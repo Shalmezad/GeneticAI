@@ -3,6 +3,7 @@
 
 #include <string>
 
+const int MEMSIZE = 30000;
 
 class BFProgram
 {

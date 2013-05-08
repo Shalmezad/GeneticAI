@@ -18,8 +18,8 @@ string BFProgram::execute(string input)
     //create a variable to hold the output
     string output = "";
     //setup the memory.
-    char memArray[30000];
-    char *ptr = memArray;
+    char memArray[MEMSIZE];
+    int memIndex = 0;
     //start execution
     for(int a=0; a<code.length(); a++)
     {
@@ -29,30 +29,30 @@ string BFProgram::execute(string input)
         {
             case '>':
                 //shift pointer to the right
-                ++ptr;
+                memIndex++;
                 break;
             case '<':
                 //shift pointer to the left
-                --ptr;
+                memIndex--;
                 break;
             case '+':
                 //increment the memory at pointer
-                ++*ptr;
+                memArray[memIndex]++;
                 break;
             case '-':
                 //decrement the memory at pointer
-                --*ptr;
+                memArray[memIndex]--;
                 break;
             case '.':
                 //output the memory at pointer
-                output += *ptr;
+                output += memArray[memIndex];
                 break;
             case ',':
                 //TODO: implement input
                 break;
             case '[':
                 //if memory is 0, go to matching ]
-                if(*ptr==0)
+                if(memArray[memIndex]==0)
                 {
                     while(code[a]!= ']'){
                         a++;
@@ -64,7 +64,7 @@ string BFProgram::execute(string input)
                 break;
             case ']':
                 //if memory isn't 0, go back to matching [
-                if(*ptr!=0)
+                if(memArray[memIndex]!=0)
                 {
                     while(code[a] != '['){
                         a--;
