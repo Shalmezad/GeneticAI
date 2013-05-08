@@ -5,6 +5,7 @@ using namespace std;
 BFProgram::BFProgram()
 {
     //for now, start with the basic hello world program:
+    fitness = 0.0;
     code = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.";
 }//BFProgram()
 
@@ -12,6 +13,13 @@ string BFProgram::execute()
 {
     return execute("");
 }//execute()
+
+string BFProgram::mutate(string toMutate)
+{
+    //TODO: Implement program mutation.
+    //go through each character...
+    return "";
+}//mutate()
 
 string BFProgram::execute(string input)
 {

@@ -93,6 +93,14 @@ void GenePool::testGeneration()
 void GenePool::pollGeneration()
 {
     //TODO: Implement polling for the next generation
+    //First, set-up the next generation.
+    BFProgram *newPool;
+    newPool = new BFProgram[1000];
+    //cycle through, setting up the new pool based on the old pool.
+    //now delete the old pool
+    delete[] programPool;
+    //and set it up so we're using the new pool.
+    programPool = newPool;
 }//pollGeneration()
 
 float GenePool::getTotalFitness()

@@ -14,6 +14,9 @@ class BFProgram
         std::string execute(std::string);
         float getFitness(){return fitness;}
         void setFitness(float f){fitness = f;}
+        std::string getCode(){return code;}
+        void setCode(std::string s){code = s;}
+        std::string mutate(std::string);
     private:
         std::string code;
         float fitness;
