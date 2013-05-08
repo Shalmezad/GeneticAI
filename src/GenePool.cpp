@@ -1,6 +1,8 @@
 #include "../include/GenePool.h"
 #include "../include/BFProgram.h"
 
+#include <stdlib.h>
+
 using namespace std;
 
 GenePool::GenePool()
@@ -17,6 +19,48 @@ GenePool::~GenePool()
 float GenePool::measureFitness(string expectedOutput, string actualOutput)
 {
     //TODO: Implement fitness measuring.
+    //Alright, we have 2 strings, we want to see how similar they are.
+    //Specifically, how close the actual output was to the expected output
+    //(whether our test matched what we wanted).
+    //http://en.wikipedia.org/wiki/Category:String_similarity_measures
+    //Specifically, I'm going to use the bonacci distnace.
+
+    //First, if either string is len=0, return.
+    int s1 = expectedOutput.length();
+    int s2 = actualOutput.length();
+    if(s1 == 0 || s2==0)
+    {
+        return 0.0;
+    }//if(s1==0 || s2==0)
+
+    //The max allowable distance between 2 characters is (max(l1, l2)/2)-1
+    float maxDistance = max(s1,s2)/2-1;
+    int m = 0;
+
+    //cycle through the first string
+    for(int a=0; a<s1; a++){
+        //cycle through the second string.
+        for(int b=0; b<s2; b++){
+            //are we less than the max allowed distance?
+            if(abs(a-b) < maxDistance){
+                //check the characters:
+                if(expectedOutput[a] == actualOutput[b]){
+                    //if a match, increment.
+                    m++;
+                    break;
+                }
+            }
+        }
+    }
+
+    //At this point, if matched characters = 0, return 0.
+    if(m == 0){
+        return 0.0;
+    }//if(matchedCharacters == 0)
+
+    //If not, do the calculation.
+    //1/3 (m/s1 + m/s2 + m-t/m)
+    return .5 * ((float)m/s1 + (float)m/s2);
     return 0.0;
 }//measureFitness(string, string)
 
