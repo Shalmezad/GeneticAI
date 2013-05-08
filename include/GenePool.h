@@ -21,6 +21,7 @@ class GenePool
         void pollGeneration();
         Test makeTest();
         std::string getReport();
+        float getTotalFitness();
     private:
         BFProgram* programPool;
 };

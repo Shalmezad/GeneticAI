@@ -2,6 +2,7 @@
 #include "../include/BFProgram.h"
 
 #include <stdlib.h>
+#include <sstream>
 
 using namespace std;
 
@@ -18,7 +19,6 @@ GenePool::~GenePool()
 
 float GenePool::measureFitness(string expectedOutput, string actualOutput)
 {
-    //TODO: Implement fitness measuring.
     //Alright, we have 2 strings, we want to see how similar they are.
     //Specifically, how close the actual output was to the expected output
     //(whether our test matched what we wanted).
@@ -60,6 +60,7 @@ float GenePool::measureFitness(string expectedOutput, string actualOutput)
 
     //If not, do the calculation.
     //1/3 (m/s1 + m/s2 + m-t/m)
+    //TODO: Add t to the equation.
     return .5 * ((float)m/s1 + (float)m/s2);
     return 0.0;
 }//measureFitness(string, string)
@@ -88,10 +89,20 @@ void GenePool::testGeneration()
         }//catch(const char *e)
     }//for(int a=0; a<POOLSIZE; a++)
 }//testGeneration()
+
 void GenePool::pollGeneration()
 {
     //TODO: Implement polling for the next generation
 }//pollGeneration()
+
+float GenePool::getTotalFitness()
+{
+    float total = 0.0;
+    for(int i=0; i<POOLSIZE; i++){
+        total += programPool[i].getFitness();
+    }
+    return total;
+}//getTotalFitness()
 
 Test GenePool::makeTest()
 {
@@ -102,7 +113,7 @@ Test GenePool::makeTest()
     //no input
     newTest.input = "";
     //we want a given message
-    newTest.output = "Hi";
+    newTest.output = "Hello";
     return newTest;
 }//makeTest()
 
@@ -110,11 +121,13 @@ string GenePool::getReport()
 {
     //display a report on the current generation.
     string report = "";
+    stringstream ss (stringstream::in | stringstream::out);
     //TODO: Add variables to the report.
-    report += "Average fitness: ";
-    report += "Best fitness: ";
-    report += "Best program: ";
-    report += "Best program output: ";
+    ss<< "Average fitness: ";
+    ss<< (getTotalFitness()/POOLSIZE)<<endl;
+    ss<< "Best fitness: "<<endl;
+    ss<< "Best program: "<<endl;
+    ss<< "Best program output: "<<endl;
 
-    return report;
+    return ss.str();
 }//getReport()
