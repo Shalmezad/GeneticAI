@@ -54,9 +54,11 @@ string BFProgram::execute(string input)
                 //if memory is 0, go to matching ]
                 if(*ptr==0)
                 {
-                    //TODO: Prevent segfaults from non-matched bracket
                     while(code[a]!= ']'){
                         a++;
+                        if(a >= code.length()){
+                            throw "Unmatched bracket '['";
+                        }
                     }
                 }//if(*ptr==0)
                 break;
@@ -64,9 +66,11 @@ string BFProgram::execute(string input)
                 //if memory isn't 0, go back to matching [
                 if(*ptr!=0)
                 {
-                    //TODO: prevent segfault from unmatched ]
                     while(code[a] != '['){
                         a--;
+                        if(a<0){
+                            throw "Unmatched bracket ']'";
+                        }
                     }
                 }//if(*ptr!=0)
 
