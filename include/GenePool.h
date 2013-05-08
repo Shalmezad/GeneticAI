@@ -5,6 +5,12 @@
 
 const int POOLSIZE = 100;
 
+struct Test
+{
+    std::string input;
+    std::string output;
+};
+
 class GenePool
 {
     public:
@@ -13,6 +19,7 @@ class GenePool
         float measureFitness(std::string, std::string);
         void testGeneration();
         void pollGeneration();
+        Test makeTest();
     private:
         BFProgram* programPool;
 };
