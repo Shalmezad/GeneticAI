@@ -20,6 +20,9 @@ string BFProgram::execute(string input)
     //setup the memory.
     char memArray[MEMSIZE];
     int memIndex = 0;
+    //setup an input index
+    int inputIndex = 0;
+
     //start execution
     for(int a=0; a<code.length(); a++)
     {
@@ -54,7 +57,11 @@ string BFProgram::execute(string input)
                 output += memArray[memIndex];
                 break;
             case ',':
-                //TODO: implement input
+                if(inputIndex >= input.length()){
+                    throw "Input index out of bounds.";
+                }
+                memArray[memIndex] = input[inputIndex];
+                inputIndex++;
                 break;
             case '[':
                 //if memory is 0, go to matching ]
