@@ -28,6 +28,7 @@ public:
     {
         code = s;
     }
+    std::string mutate();
     std::string mutate(std::string);
 private:
     std::string code;

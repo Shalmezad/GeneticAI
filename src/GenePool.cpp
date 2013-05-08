@@ -99,15 +99,29 @@ void GenePool::testGeneration()
 
 void GenePool::pollGeneration()
 {
-    //TODO: Implement polling for the next generation
     //First, set-up the next generation.
     BFProgram *newPool;
     newPool = new BFProgram[POOLSIZE];
+    //Setup the "stick" poll variables.
+    float stickTotal = getTotalFitness();
+    float selection, tempTotal;
+    int selected = 0;
     //cycle through, setting up the new pool based on the old pool.
     for(int a=0; a<POOLSIZE; a++)
     {
-        //choose a base program.
-
+        //find the base program.
+        tempTotal = 0.0;
+        selection = (float)rand()/((float)RAND_MAX/stickTotal);
+        for(int b=0; b<POOLSIZE; b++){
+            tempTotal += programPool[b].getFitness();
+            if(tempTotal > selection){
+                selected = b;
+                break;
+            }
+        }
+        //we have a base program, make the new program.
+        //TODO: Add more polling methods (clone/cross)
+        newPool[a].setCode(programPool[selected].mutate());
     }
     //now delete the old pool
     delete[] programPool;

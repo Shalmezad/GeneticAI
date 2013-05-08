@@ -13,7 +13,10 @@ string BFProgram::execute()
 {
     return execute("");
 }//execute()
-
+string BFProgram::mutate()
+{
+    return mutate(code);
+}
 string BFProgram::mutate(string toMutate)
 {
     //TODO: Implement program mutation.
