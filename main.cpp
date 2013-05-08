@@ -1,14 +1,11 @@
 #include <iostream>
-#include "include/BFProgram.h"
+#include "include/GenePool.h"
 
 using namespace std;
 
 int main()
 {
-    //run a quick test for now
-    //create a BFProgram
-    BFProgram testProgram;
-    //then display it's output
-    cout<<testProgram.execute();
+    GenePool gp;
     return 0;
 }
+

@@ -31,14 +31,14 @@ string BFProgram::execute(string input)
                 //shift pointer to the right
                 memIndex++;
                 if(memIndex >= MEMSIZE){
-                    throw "Memory address out of bounds."
+                    throw "Memory address out of bounds.";
                 }
                 break;
             case '<':
                 //shift pointer to the left
                 memIndex--;
                 if(memIndex <0 ){
-                    throw "Memory address out of bounds."
+                    throw "Memory address out of bounds.";
                 }
                 break;
             case '+':
